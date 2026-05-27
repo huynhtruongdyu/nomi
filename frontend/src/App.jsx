@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '@/assets/images/logo-universal.png';
 import './App.css';
 import { GreetingForm } from '@/features/greeting';
+import { DeviceInfoCard } from '@/features/device';
 import ErrorBoundary from '@/components/common/ErrorBoundary/ErrorBoundary';
 
 function App() {
@@ -9,11 +10,15 @@ function App() {
     <ErrorBoundary>
       <div id="App">
         <img src={logo} id="logo" alt="logo" />
-        <GreetingForm />
+        <div className="content-layout">
+          <GreetingForm />
+          <DeviceInfoCard />
+        </div>
       </div>
     </ErrorBoundary>
   );
 }
+
 
 
 export default App;
