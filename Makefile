@@ -1,8 +1,8 @@
 .DEFAULT_GOAL := build
 
-.PHONY: dev build
+.PHONY: run build
 
-dev:
+run:
 	wails dev
 
 build:

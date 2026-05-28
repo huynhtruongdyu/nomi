@@ -2,7 +2,7 @@ import React from 'react';
 import { useDeviceInfo } from '../hooks/useDeviceInfo';
 import styles from './DeviceInfoCard.module.css';
 
-const DeviceInfoCard = () => {
+const DeviceInfoCard: React.FC = () => {
   const { deviceInfo, isLoading, error } = useDeviceInfo();
 
   if (isLoading) {

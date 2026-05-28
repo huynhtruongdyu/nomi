@@ -4,16 +4,17 @@ const PREFIX = 'nomi_app_';
  * Common Storage Service wrapping localStorage with key prefixing and JSON safety.
  */
 export const storage = {
-  get: (key, defaultValue = null) => {
+  get: <T>(key: string, defaultValue: T | null = null): T | null => {
     try {
       const item = localStorage.getItem(`${PREFIX}${key}`);
-      return item ? JSON.parse(item) : defaultValue;
+      return item ? (JSON.parse(item) as T) : defaultValue;
     } catch (error) {
       console.error(`Error reading key "${key}" from localStorage:`, error);
       return defaultValue;
     }
   },
-  set: (key, value) => {
+
+  set: (key: string, value: unknown): boolean => {
     try {
       localStorage.setItem(`${PREFIX}${key}`, JSON.stringify(value));
       return true;
@@ -22,7 +23,8 @@ export const storage = {
       return false;
     }
   },
-  remove: (key) => {
+
+  remove: (key: string): boolean => {
     try {
       localStorage.removeItem(`${PREFIX}${key}`);
       return true;
@@ -31,7 +33,8 @@ export const storage = {
       return false;
     }
   },
-  clear: () => {
+
+  clear: (): boolean => {
     try {
       Object.keys(localStorage)
         .filter((key) => key.startsWith(PREFIX))
@@ -41,5 +44,5 @@ export const storage = {
       console.error('Error clearing app namespace in localStorage:', error);
       return false;
     }
-  }
+  },
 };

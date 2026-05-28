@@ -4,7 +4,7 @@ import Input from '@/components/ui/Input/Input';
 import { useGreeting } from '../hooks/useGreeting';
 import styles from './GreetingForm.module.css';
 
-const GreetingForm = () => {
+const GreetingForm: React.FC = () => {
   const {
     name,
     resultText,
@@ -12,10 +12,10 @@ const GreetingForm = () => {
     history,
     handleNameChange,
     executeGreeting,
-    clearHistory
+    clearHistory,
   } = useGreeting();
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === 'Enter') {
       executeGreeting();
     }
@@ -68,6 +68,5 @@ const GreetingForm = () => {
     </div>
   );
 };
-
 
 export default GreetingForm;
